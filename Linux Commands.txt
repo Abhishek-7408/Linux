@@ -1,0 +1,202 @@
+Basic Commands:
+who = Shwos list of al logged in users
+who am i = Shows who is currently logged in user
+who -all = shows list of all users available
+hostname = shows system name
+hostname -i = shows ip address of system
+pwd = shows present working directory
+date = shows current system date & time
+cal - shows calender (cal 2021, cal -3)
+
+4.2 Directory & file commands:
+cd / = jumps to root directory
+cd ~ = jumps to current home directory
+cd directory1 = to open directory1
+cd dir1/dir2/dir3/dir4 = to open directory of specified path
+cd .. = moves one step back in directory
+cd ../../ = moves two step back in directory
+mkdir directory = to create directory
+rmdir directory = to remove directory
+mkdir -p f1/f2/f3/f4/f5 = to create directory within directory 
+mkdir -p f1 f2 f3 f4 f5 f6 = to create multiple directory in present directory
+
+4.2 ls commands:
+ls = list of all files available in pwd
+ls -l = display files in long listing format in ascending order (according names)
+ls -a = display all file with hidden files
+ls -la = display all file with hidden files in long listing format
+ls -lrt = display files in long listing format
+ls -lh = displays file size in human readable format
+ls -lhS = displays files in descending order according to file size
+ls -l --block-size=m (k,m,g,t,p)
+ls -d */ = displays only subdirectories
+ls -g = excludes group information
+ls -lG = excludes owner informantion
+ls -n = displays group ID & owner ID
+ls --color=never/auto/yes = 
+ls -li = displays file index number in first column
+ls -p = displays directories with / mark
+ls -r = displays files in decending order (according names)
+ls -R = displays all content of sub-directories
+ls -lt = displays files in decending order (according files modified)
+ls ~ = display list of home directory in present directory
+ls ../ = display content of parent in present directory
+ls --version = display version of ls
+
+4.2 pwd command:
+pwd = display present working directory
+
+4.3 touch commands:
+touch file1.txt = creates an empty file
+touch f1.txt f2.txt f3.txt = creates multiple empty files
+touch f{4..10}.txt = creates multiple empty files with numbers
+touch f{a..z}.txt = creates multipe empty files with characters
+timestamp details = 199012010708.ss (yyyymmddhsms.ss)
+touch -t 199012010708 file.txt = it will create file on specific date
+touch -d 19August2020 file.txt = it wil create file on specific date
+touch -d 9:27am file.txt = it will create file on specific time
+touch -d Monday file.txt = it will create file on specific week day
+touch -d 5year file.txt = it will create file +five years from current date
+touch -d -5year file.txt = it will create file -five years from current date
+touch -d tomorrow file.txt = it will create file on tomorrow's dates
+touch -d yesterday file.txt = it will create file on yesterday's dates
+touch -a file.txt = it will change access time of file as current time
+touch -at 199605060937 file.txt = update access time on specific time stamp
+ls -lu = displays the access time of file
+touch -m file.txt = it will change modification time of file as current time
+touch -mt 199605060937 file.txt = update modofication time on specific time stamp
+ls - l = displays modification time file
+touch -am file.txt = update access & modification time
+touch -amt 199002021219 file.txt = update access & modification time on specific timestamp
+ls --full-time = displays full date & time
+ls - lc = displays change time files (we will see this with chmod command)
+touch -r referencefile sourcefile = update time of sourcefile according reference file
+
+5.1 file types commands:
+file file1.txt = it will display file type of file1.txt
+file dir = it will display file type of dir
+
+5.2 find commands:
+find filename or directoryname = to find file is available or not.
+find . -name “*.txt” = it will display all file whose extensions is .txt in pwd
+find . -type d -name “*.bak” = it will display all directories whose extension is .dir in pwd
+find . -newer msg.txt = it will display all files newer that msg.txt
+find . -name file10.txt - delete = to find and delete specific file
+find . -depth -name f9 = it will display the path of f9 directory available in pwd
+find . - depth - name file.txt = it will display the path of file.txt available in pwd
+find . -mtime -1 = it will display file updated within 1 day
+find ./ -perm 777 = it will display file which has permission of read, write and execute
+//Permission Details
+//Read = 4(r), Write = 2(w), Execute = 1(e)
+//000-000-000
+//User-group-other
+find . -mmin -30 = files which are modified within last 30 minutes
+find . -not -mmin -30 = file which are not modified within last 30 minutes
+
+5.3 locate commands:
+locate file1.txt = it will display all file name file1.txt in all linux
+locate .file = it will display all files who contain file in there name.
+locate -n 10 *.txt = it will display all file everywhere in linux which extension are .txt
+locate -i File1.txt = it will ignore case (it will not work in case sensitive mode)
+locate -c .file = it will display the count of all files containing file in their names
+locate -c “*.txt” = it will count of file available with extension .txt
+
+5.4 cp commands:
+cp source_file destination_file = overwrites data of file1 to file2
+cp source Target_Directory = copy file from source to target diretory
+cp src1 src2 src3 srcN Trg_Dir = copy file from multiple sources to tareget directory
+cat file1.txt > file2.txt = overwrites data of file 1 to file2
+cat file1.txt >> file2.txt = append data of file1 to file2
+cp (-a/-R) src_path trg_path = copy all files with a cascading directory, including hidden file
+cp -f src_path trg_path = copy file forcefully from source to target
+cp -i src_path trg_path = prompt for confirmation (y/n) before overwriting
+cp -n src_path trg_path = if same name file is already presant in target it will not overwrite (skips that particular file from copying)
+cp -u src_path trg_path = copy when the source file is new than the target file
+cp -v src_path trg_path = it will print all the process while copying
+cp -s src_path trg_path = used to create symbolic link of source & target file
+cp -L src_path trg_path = used to create hard link of source & target file
+
+5.5 rm commands:
+rm file1.txt = to delete file
+rm doc* = erases all files begins with “doc” in pwd
+rm *.txt = erases all files ends with “.txt” in pwd
+rm -i file1.txt = prompt for confirmation (y/n) before deleting file
+rm -d dir = used to delete empty directory
+rm -ri file1.txt = prompt for confirmation (y/n) before deleting empty directory
+rm -rf abc = delete cascading directory(including sub-directories & file from abc directory)
+rm -I abc/* = delete all content from abc directory
+rm -f file{1..5}.txt = delete multiple files (file1.txt to file5.txt) in pwd
+
+5.6 mv commands:
+mv file1.txt file2.txt = delete file1 & overwrite data in file2 (if file2.txt is available)
+mv file1.txt file10.txt = rename file1.txt to file10.txt (if file10.txt is not available)
+mv *.c trg_path = moves all files whose extension is (.c) in target
+ms src_path/* trg_path = moves all foles for source to target
+mv -i fil1.txt file2.txt = prompt for confirmation (y/n) before moving file
+mv --suffix=.bak file.txt file2.txt = creates backup and moves file
+mv -u src_path/* = moves all foles for source to target & skips files which are already present at target
+mv file1.txt .file1.txt = to hide file
+mv .file.txt file1.txt = to unhide file
+
+5.7 mkdir commands:
+mkdir test = create directory
+mkdir test1 test2 test3 = create multiple directory
+mkdir -p a/b/c/d = create cascading directories
+mkdir -pv a/b/c/d = create cascading directories and shows the process
+
+5.8 rmdir commands:
+rmdir test = delete empty directory
+rmdir test1 test2 test3 = delete multiple empty directory
+rmdir -p a/b/c/d = delete cascading directory
+rm -rf test = delete non empty directory
+
+5.9 cat commands:
+cat file1.txt = opens file in read mode
+cat file2.txt file2.txt = opent miltiple file in read mode
+cat > file1.txt = opens file in edit mode & overwrites written data(create file if not exists)
+cat >> file1.txt = opens file in edit mode & appends written data(create file if not exists)
+tac file1.txt = opens file in read mode & displays content in reverse order (last line as first line)
+
+5.10 more & less commands:
+more file1.txt = by using tab or pressing enter we can see more line in large files
+less file1.txt = by using navigation keys we can scroll file up & down
+
+5.11 head & tail commands:
+head file.txt = displays first 10 lines from file
+tail file.txt = displays last 10 lines from file
+head -3 file.txt = displays first 3 lines from file
+tail -9 file.txt = displays last 9 lines from file
+head -13 file.txt | tail -8 = display 6 to 13 lines from file
+head -18 file.txt | tail -2 = display 17 and 18 line from file
+head -12 file.txt | tail -1 = display line 12 from file
+head -3 file.txt | tail -1 && head -7 file.txt | tail -1 && head -11 file.txt | tail -1 = display line 3, 7 and 11
+
+5.etc wc commands:
+wc -l file1.txt = displays number of lines available in file
+wc -w file.txt = displays number of words available in file
+wc -c file.txt = displays number of characters available in file
+
+5.etc line number commands:
+nl file.txt = display line number in file except blank lines
+cat -n file.txt = display line number to all lines
+
+5.12 chmod commands (change mode):
+Specifications:
+u user, g group, o other
+r read=4, w write=2, x execute=1
++ add, - remove
+chmod (u/g/o)(+/-/=)(r/w/x)
+chmod go+r myfile = set read permission for group & owner
+chmod a+rwx myfile = set read, write&execute permission to all(user, group, other)
+chmod -R a+r dirname = set read permission to a directory and everything within that directory
+chmod go-r myfile = removes read permission for group and user
+chmod u=rw,og=r myfile =  set read & write permission for user and read permission for other and group
+chmod 777 myfile = set read, write & execute permission for user group and other
+
+5.13 chown chgrp commands (change ownership, change group):
+chown root myfile = change owner of file
+chown root dir = change owner of directory
+chgrp root myfile = change group of file
+chgrp root dir = change group of directory
+chown -R root dir = change owner of directory & all files available in the directory
+chgrp -R root dir = change group of directory & all files available in the directory

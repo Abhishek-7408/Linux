@@ -1,0 +1,49 @@
+We create partition for using multiple OS, or to save data securely, or to install some applications on that partition,
+
+
+
+The fdisk command is a text-based utility for viewing and managing hard disk partitions on Linux. 
+It’s one of the most powerful tools you can use to manage partitions, but it’s confusing to new users.
+
+
+
+1)Lists the partitions on your system.
+
+     # fdisk -l
+
+2)List only specific device(Disk) partitions.
+
+     # fdisk -l /dev/sda (sda is name of disk it may change according to os)
+
+# fdisk /dev/sda
+
+3) to create partition
+
+Press m so you can see all the commands available in fdisk,
+
+Press n for creating new partition, 
+
+Press p for primary, e for extended partition,
+
+If you want to create multiple partition, type ending value in last sector, 
+otherwise  by default it will take ending value and create only one partition,
+
+At the end type w and enter to save the changes you hve done.
+
+
+3)to delete a partition press d, enter partition number, press w to save and exit.
+
+
+4)to change partition as swap space, 
+
+type t, 
+
+select partition number,
+
+Type hex code, (swap hex code is 82, normal hex code is 83),
+
+Type w to save and exit.
+
+
+
+Press l to to see all hex codes available.
